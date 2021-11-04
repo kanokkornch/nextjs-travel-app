@@ -4,10 +4,19 @@ import Head from 'next/head';
 import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from '../src/theme';
+import '../styles/custom.scss';
+import AOS from "aos";
+
+import "aos/dist/aos.css";
 
 export default function MyApp(props) {
   const { Component, pageProps } = props;
-
+  React.useEffect(() => {
+    AOS.init({
+      duration: 800,
+      // startEvent: true,
+    })
+  });
   React.useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');
@@ -19,7 +28,7 @@ export default function MyApp(props) {
   return (
     <React.Fragment>
       <Head>
-        <title>Travel App</title>
+        <title>NAIFUN</title>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
       </Head>
       <ThemeProvider theme={theme}>
